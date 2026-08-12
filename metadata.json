@@ -1,0 +1,6 @@
+{
+  "name": "AI Bas Relief to STL",
+  "description": "Chuyển đổi ảnh 2D tượng Phật, phù điêu, hoa văn thành mô hình phù điêu 3D và xuất file STL kín khối cho CNC và in 3D.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
