@@ -5,6 +5,7 @@ import { ControlPanel } from "./components/ControlPanel";
 import { DepthMapViewer } from "./components/DepthMapViewer";
 import { ThreeDPreview } from "./components/ThreeDPreview";
 import { PythonArchDoc } from "./components/PythonArchDoc";
+import { WindowsSetupGuide } from "./components/WindowsSetupGuide";
 
 import { SAMPLE_IMAGES } from "./data/samples";
 import { ReliefSettings, ImageDimensions, AiDepthAnalysis } from "./types";
@@ -12,7 +13,7 @@ import { processImageToHeightMap, HeightMapResult } from "./utils/heightmap";
 import { buildSolidReliefGeometry, SolidReliefGeometryResult, exportBinarySTL } from "./utils/reliefMesh";
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<"studio" | "python_arch">("studio");
+  const [activeTab, setActiveTab] = useState<"studio" | "python_arch" | "windows_exe">("studio");
 
   // Image & Sample selection
   const [currentImageSrc, setCurrentImageSrc] = useState<string>(SAMPLE_IMAGES[0].dataUrl);
@@ -256,6 +257,8 @@ export default function App() {
               </div>
             </div>
           </div>
+        ) : activeTab === "windows_exe" ? (
+          <WindowsSetupGuide />
         ) : (
           <PythonArchDoc />
         )}

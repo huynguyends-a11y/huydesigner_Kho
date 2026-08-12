@@ -1,9 +1,9 @@
 import React from "react";
-import { Box, Code2, Layers, Cpu, Download, Sparkles } from "lucide-react";
+import { Box, Code2, Layers, Monitor, Download, Sparkles } from "lucide-react";
 
 interface HeaderProps {
-  activeTab: "studio" | "python_arch";
-  setActiveTab: (tab: "studio" | "python_arch") => void;
+  activeTab: "studio" | "python_arch" | "windows_exe";
+  setActiveTab: (tab: "studio" | "python_arch" | "windows_exe") => void;
   onExportStl?: () => void;
   isMeshReady: boolean;
 }
@@ -41,7 +41,7 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-800">
           <button
             onClick={() => setActiveTab("studio")}
-            className={`flex items-center gap-2 px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
+            className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
               activeTab === "studio"
                 ? "bg-amber-500 text-slate-950 font-semibold shadow-sm"
                 : "text-slate-400 hover:text-slate-200"
@@ -52,15 +52,28 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
 
           <button
+            onClick={() => setActiveTab("windows_exe")}
+            className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
+              activeTab === "windows_exe"
+                ? "bg-cyan-500 text-slate-950 font-semibold shadow-sm"
+                : "text-slate-400 hover:text-slate-200"
+            }`}
+          >
+            <Monitor className="w-4 h-4" />
+            <span>Cài Đặt Windows (.exe)</span>
+          </button>
+
+          <button
             onClick={() => setActiveTab("python_arch")}
-            className={`flex items-center gap-2 px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
+            className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
               activeTab === "python_arch"
                 ? "bg-amber-500 text-slate-950 font-semibold shadow-sm"
                 : "text-slate-400 hover:text-slate-200"
             }`}
           >
             <Code2 className="w-4 h-4" />
-            <span>Kiến Trúc Python PySide6 (`app/`)</span>
+            <span className="hidden md:inline">Mã Nguồn Python</span>
+            <span className="md:hidden">Python</span>
           </button>
         </div>
 
